@@ -1,18 +1,23 @@
 package hiimlyn.dev.documentservice.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
 import java.util.Map;
+import java.util.UUID;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "file_records")
 public class FileRecordEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
-	private String id;
+	private UUID id;
 
 	@Column(name = "file_key", nullable = false)
 	private String fileKey;
@@ -20,7 +25,7 @@ public class FileRecordEntity {
 	@Column(name = "bucket", nullable = false)
 	private String bucket;
 
-	@Column(name = "original_file_name", nullable = false)
+	@Column(name = "original_filename", nullable = false)
 	private String originalFileName;
 
 	@Column(name = "content_type")
